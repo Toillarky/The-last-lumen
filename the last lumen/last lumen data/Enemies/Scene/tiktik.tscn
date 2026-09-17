@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://bbls183ic3jqe"]
+
+[ext_resource type="Texture2D" uid="uid://dt1hbh1riq11f" path="res://Enemies/Sprites/enemy_rpg.png" id="1_2wuae"]
+[ext_resource type="Script" uid="uid://beshde2888r1j" path="res://Enemies/Sprites/tiktik.gd" id="1_16r6l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16r6l"]
+size = Vector2(16, 11)
+
+[sub_resource type="Animation" id="Animation_n2dpk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_xljlr"]
+resource_name = "move"
+length = 0.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ceff5"]
+_data = {
+&"RESET": SubResource("Animation_n2dpk"),
+&"move": SubResource("Animation_xljlr")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wuae"]
+size = Vector2(18, 12.5)
+
+[node name="tiktik" type="CharacterBody2D" unique_id=1956104368]
+script = ExtResource("1_16r6l")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=636986488]
+texture = ExtResource("1_2wuae")
+hframes = 5
+vframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1810761575]
+z_index = -1
+position = Vector2(-1, 1.5)
+shape = SubResource("RectangleShape2D_16r6l")
+
+[node name="anim" type="AnimationPlayer" parent="." unique_id=1617961466]
+libraries/ = SubResource("AnimationLibrary_ceff5")
+autoplay = &"move"
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1552993164]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=381168934]
+position = Vector2(-1, -0.75)
+shape = SubResource("RectangleShape2D_2wuae")
+debug_color = Color(1, 0.017164148, 0.016224107, 0.41960785)
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

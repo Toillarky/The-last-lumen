@@ -1,0 +1,259 @@
+[gd_scene format=3 uid="uid://bkp1qqimrgebs"]
+
+[ext_resource type="Script" uid="uid://cq8428k7eiaup" path="res://Player/Script/player_controller.gd" id="1_nq6wp"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nq6wp"]
+load_path = "res://.godot/imported/Player_hollow_knight.png-8e58a824dc10d80b0d12dc0b8150326e.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmgeq"]
+size = Vector2(12, 22)
+
+[sub_resource type="Animation" id="Animation_gssft"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sword/sword_colider:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sword/sword_pogo:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4qt7j"]
+resource_name = "fall"
+length = 0.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+
+[sub_resource type="Animation" id="Animation_i0tdu"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_w5akg"]
+resource_name = "jump"
+length = 0.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="Animation" id="Animation_svdwc"]
+resource_name = "move"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.90000004),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_x474h"]
+resource_name = "pogo"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.19999999, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 16, 16, 16]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sword/sword_pogo:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, false, false]
+}
+
+[sub_resource type="Animation" id="Animation_hoak5"]
+resource_name = "pogo_jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_nq6wp")]
+}
+
+[sub_resource type="Animation" id="Animation_nq6wp"]
+resource_name = "sword"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [17, 18, 19, 20]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sword/sword_colider:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, false, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset_stats"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kojqv"]
+_data = {
+&"RESET": SubResource("Animation_gssft"),
+&"fall": SubResource("Animation_4qt7j"),
+&"idle": SubResource("Animation_i0tdu"),
+&"jump": SubResource("Animation_w5akg"),
+&"move": SubResource("Animation_svdwc"),
+&"pogo": SubResource("Animation_x474h"),
+&"pogo_jump": SubResource("Animation_hoak5"),
+&"sword": SubResource("Animation_nq6wp")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x474h"]
+size = Vector2(15, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkgs8"]
+size = Vector2(14, 2)
+
+[node name="Player" type="CharacterBody2D" unique_id=241365350]
+collision_mask = 2
+safe_margin = 0.14
+script = ExtResource("1_nq6wp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1773066721]
+position = Vector2(0, -11)
+texture = SubResource("CompressedTexture2D_nq6wp")
+hframes = 8
+vframes = 7
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=805012444]
+shape = SubResource("RectangleShape2D_dmgeq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=636727172]
+libraries/ = SubResource("AnimationLibrary_kojqv")
+
+[node name="raycast" type="Node2D" parent="." unique_id=820831082]
+
+[node name="right_ray" type="RayCast2D" parent="raycast" unique_id=525133446]
+target_position = Vector2(14, 0)
+collision_mask = 2
+
+[node name="sword" type="Area2D" parent="." unique_id=1667910041 groups=["Sword"]]
+
+[node name="sword_colider" type="CollisionShape2D" parent="sword" unique_id=1632400909]
+position = Vector2(17, -2.5)
+shape = SubResource("RectangleShape2D_x474h")
+debug_color = Color(0.9962353, 3.85046e-06, 0.23533764, 0.41960785)
+
+[node name="sword_pogo" type="CollisionShape2D" parent="sword" unique_id=1319782532]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_qkgs8")
+debug_color = Color(0.9602881, 0, 0.08480216, 0.41960785)
